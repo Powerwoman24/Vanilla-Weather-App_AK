@@ -1,4 +1,41 @@
 h1 {
-    color: blue;
-    font-size: 24ps;
+  color: #002954;
+  font-size: 24px;
+}
+ul {
+  margin: 0;
+  padding: 0;
+}
+li {
+  list-style: none;
+  color: #002954;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  font-weight: 100;
+  margin: 0;
+  padding: 0;
+}
+li:first-letter {
+  text-transform: capitalize;
+}
+.app-wrapper {
+  margin: 0 auto;
+  max-width: 600px;
+  padding-top: 20px;
+}
+.card-border {
+  padding: 20px;
+  border: 1px solid #002954;
+  border-radius: 5px;
+}
+.overview {
+  padding-bottom: 20px;
+}
+.weather-icon {
+  margin-right: 20px;
+  width: 64px;
+  height: 64px;
+}
+.temperature {
+  font-size: 40px;
 }
