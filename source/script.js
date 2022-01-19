@@ -35,9 +35,14 @@ function displayTemperature(response) {
   windspeedElement.innerHTML = Math.round(response.data.wind.speed);
   let dtElement = document.querySelector("#dt");
   dtElement.innerHTML = formatDate(response.data.dt * 1000);
+  let iconElement = document.querySelector("#icon");
+  iconElement.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
 }
 
 let apiKey = "ab20237aa48c3e4dbfd5087d4c74545c";
-let apiURL = `https://api.openweathermap.org/data/2.5/weather?q=Winterthur&appid=${apiKey}&units=metric`;
+let apiURL = `https://api.openweathermap.org/data/2.5/weather?q=New York&appid=${apiKey}&units=metric`;
 
 axios.get(apiURL).then(displayTemperature);

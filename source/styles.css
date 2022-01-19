@@ -39,3 +39,6 @@ li:first-letter {
 .temperature {
   font-size: 40px;
 }
+.icon {
+  max-width: 80px;
+}
