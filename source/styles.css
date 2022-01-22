@@ -42,3 +42,9 @@ li:first-letter {
 .icon {
   max-width: 80px;
 }
+.search-button {
+  background-color: #e05c45;
+  color: #002954;
+  border-radius: 5px;
+  border: 1px solid #e05c45;
+}
