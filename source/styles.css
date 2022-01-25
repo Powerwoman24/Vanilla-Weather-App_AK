@@ -38,6 +38,10 @@ li:first-letter {
 }
 .temperature {
   font-size: 40px;
+  color: #002954;
+}
+.main-celsius {
+  color: #002954;
 }
 .icon {
   max-width: 80px;
@@ -47,4 +51,26 @@ li:first-letter {
   color: #002954;
   border-radius: 5px;
   border: 1px solid #e05c45;
+}
+.weather-forecast {
+  margin-top: 20px;
+}
+.weather-forecast-day {
+  font-size: 20px;
+  color: #002954;
+}
+.weather-forecast-temp-max {
+font-size: 16px;
+font-weight: 500;
+color: #002954;
+}
+.weather-forecast-temp-min {
+  font-size: 16px;
+  color: #002954;
+ font-weight: 200;
+}
+.col-2 {
+  background:#e05c45;
+  border-radius: 5px;
+  text-align: center;
 }
