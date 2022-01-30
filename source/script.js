@@ -41,7 +41,7 @@ function displayForecast(response) {
  
 
   forecast.forEach(function (forecastDay, index) {
-    if (index < 6) {
+    if (index < 5) {
     forecastHTML =
       forecastHTML +
       `
