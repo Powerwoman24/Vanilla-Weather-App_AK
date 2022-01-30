@@ -20,7 +20,7 @@ li:first-letter {
 }
 .app-wrapper {
   margin: 0 auto;
-  max-width: 600px;
+  max-width: 500px;
   padding-top: 20px;
 }
 .card-border {
@@ -53,7 +53,7 @@ li:first-letter {
   border: 1px solid #e05c45;
 }
 .weather-forecast {
-  margin-top: 20px;
+  margin: 10px;
 }
 .weather-forecast-day {
   font-size: 20px;
@@ -69,8 +69,9 @@ color: #002954;
   color: #002954;
  font-weight: 200;
 }
-.col-2 {
+.col-3 {
   background:#e05c45;
   border-radius: 5px;
+  margin: 2px;
   text-align: center;
 }

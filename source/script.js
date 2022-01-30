@@ -21,24 +21,22 @@ function formatDate(timestamp) {
   return `${day} ${hours}:${minutes}`;
 }
 
-function displayForecast() {
-  let forecastElement = docment.querySelector("#forecast");
+function displayForecast(response) {
+  console.log(response.data.daily);
+  let forecastElement = document.querySelector("#forecast");
 
-let forecastHTML = `<div class="row">`;
-let days = [
+  let forecastHTML = `<div class="row">`;
+  let days = [
     "Monday",
     "Tuesday",
     "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
-    "Sunday",
+  ];
 
   days.forEach(function (day) {
-
-  forecastHTML = forecastHTML +
-  `
-    <div class="col-2" class="weatherForecast">
+    forecastHTML =
+      forecastHTML +
+      `
+    <div class="col-3" class="weatherForecast">
        <div class="dayForecast">
         ${day}
         </div>
@@ -52,13 +50,19 @@ class="iconForecast">
 <span class="weather-forecast-temp-min">12°C</span>
 <span class="weather-forecast-temp-max">18°C</span>
 </div>
-</div>
   `;
-  });
-forecastHTML = forecastHTML + `</div>`;
-forecastElement.innterHTML = forecastHTML;
-+}
 
+    forecastHTML = forecastHTML + `</div>`;
+    forecastElement.innerHTML = forecastHTML;
+  });
+}
+
+function getForecast(coordinates) {
+  console.log(coordinates);
+  let apiKey = "e68957dd092b69d6f402650ba1584ada";
+  let apiURL = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}units=metric`;
+axios.get(apiURL).then(displayForecast);
+}
 
 function displayTemperature(response) {
   let temperatureElement = document.querySelector("#temperature");
@@ -78,11 +82,12 @@ function displayTemperature(response) {
   iconElement.setAttribute(
     "src",
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
-  );
-}
+    );
+    getForecast(response.data.coord);
+  }
 
 function search(city) {
-  let apiKey = "ab20237aa48c3e4dbfd5087d4c74545c";
+  let apiKey = "e68957dd092b69d6f402650ba1584ada";
   let apiURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
   axios.get(apiURL).then(displayTemperature);
 }
