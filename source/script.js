@@ -85,6 +85,7 @@ function displayTemperature(response) {
     );
     getForecast(response.data.coord);
   }
+ 
 
 function search(city) {
   let apiKey = "e68957dd092b69d6f402650ba1584ada";
