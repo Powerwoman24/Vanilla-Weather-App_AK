@@ -21,46 +21,55 @@ function formatDate(timestamp) {
   return `${day} ${hours}:${minutes}`;
 }
 
+function formatDay(timestamp){
+let date = new Date(timestamp * 1000);
+let day = date.getDay();
+let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+return days[day];
+}
+
 function displayForecast(response) {
-  console.log(response.data.daily);
+  
+  let forecast = response.data.daily;
+
   let forecastElement = document.querySelector("#forecast");
 
   let forecastHTML = `<div class="row">`;
-  let days = [
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-  ];
+  forecast.forEach(function (forecastDAy) {
 
-  days.forEach(function (day) {
+  })
+ 
+
+  forecast.forEach(function (forecastDay, index) {
+    if (index < 6) {
     forecastHTML =
       forecastHTML +
       `
-    <div class="col-3" class="weatherForecast">
+    <div class="col-2" class="weatherForecast">
        <div class="dayForecast">
-        ${day}
+        ${formatDay(forecastDay.dt)}
         </div>
 
-<img src="https://openweathermap.org/img/wn/10d@2x.png" 
+<img src="https://openweathermap.org/img/wn/${forecastDay.weather[0].icon}@2x.png" 
 alt=""
 width="36"
 class="iconForecast">
 
 <div class="weatherForecast">  
-<span class="weather-forecast-temp-min">12°C</span>
-<span class="weather-forecast-temp-max">18°C</span>
+<span class="weather-forecast-temp-min">${Math.round(forecastDay.temp.min)}°C</span>
+<span class="weather-forecast-temp-max">${Math.round(forecastDay.temp.max)}°C</span>
 </div>
   `;
 
     forecastHTML = forecastHTML + `</div>`;
     forecastElement.innerHTML = forecastHTML;
-  });
+  }});
 }
 
 function getForecast(coordinates) {
   console.log(coordinates);
   let apiKey = "e68957dd092b69d6f402650ba1584ada";
-  let apiURL = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}units=metric`;
+  let apiURL = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
 axios.get(apiURL).then(displayForecast);
 }
 
